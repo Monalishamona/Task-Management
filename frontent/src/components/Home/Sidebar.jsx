@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { CgNotes } from "react-icons/cg";
 import { IoIosCloudDone } from "react-icons/io";
 import { MdOutlineLabelImportant } from "react-icons/md";
@@ -8,16 +9,20 @@ const Sidebar = () => {
     {
       title:"All tasks",
       icon: <CgNotes />,
+      link:"/",
     },{
       title:"Important tasks",
-      icon: <MdOutlineLabelImportant />
+      icon: <MdOutlineLabelImportant />,
+      link:"/importantTasks"
     },{
       title:"Completed tasks",
       icon:<IoIosCloudDone />,
+      link:"/completedTasks"
      
     },{
       title:"Incompleted tasks",
       icon:<MdIncompleteCircle />,
+      link:"/incompletedTasks"
     },
   ];
   return (
@@ -28,7 +33,7 @@ const Sidebar = () => {
       </div>
       <div>
         {data.map((items,i)=>(
-          <div className='my-2 flex items-center hover:bg-gray-600 p-2 rounded transition-all duration-300'>{items.icon} {items.title}</div>
+          <Link  to={items.link} key={i} className='my-2 flex items-center hover:bg-gray-600 p-2 rounded transition-all duration-300'>{items.icon} {items.title}</Link>
         ))}
       </div>
       <div>
